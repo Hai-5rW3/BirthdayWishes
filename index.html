@@ -28,7 +28,7 @@
                     你知道吗？你的存在，就像寂静世界里的动人潮汐，让平凡的日子有了心跳的起伏。
                     又长一岁，愿你继续做那轮清澈的月亮，盈缺皆美；也做那阵自由的风，去向心中的旷野。
                     生日快乐，愿你身边总有不散的暖意，心底永存不竭的星辰。
-                    我会陪着你，陪你度过每一个生日，即使那天我或许会缺席，即使我不能第一时间送上祝福，但我永远会在另一边祝福你，永远记住这个“特殊意义”的一天。
+                    我会陪着你，陪你度过每一个生日，即使那天我或许会缺席，即使我不能第一时间送上祝福，但我永远会在另一边祝福你，永远记住这个"特殊意义"的一天。
                 </p>
             </div>
 
@@ -42,6 +42,70 @@
         </div>
     </div>
 
+    <!-- 飘落元素容器 -->
+    <div class="falling-elements"></div>
+
+    <!-- 添加星星闪烁效果 -->
+    <script>
+        // 创建星星闪烁效果
+        document.addEventListener('DOMContentLoaded', function () {
+            // 创建星星
+            createStars();
+
+            // 创建飘落元素
+            createFallingElements();
+
+            // 添加卡片入场动画
+            document.querySelector('.card').style.animation = 'fadeInUp 1.5s ease-out forwards';
+        });
+
+        function createStars() {
+            const starsContainer = document.createElement('div');
+            starsContainer.className = 'stars';
+            document.body.appendChild(starsContainer);
+
+            // 创建多个星星
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+
+                // 随机位置和大小
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function createFallingElements() {
+            const container = document.querySelector('.falling-elements');
+            const types = ['❤', '✨', '🌟', '🎂', '🎁'];
+            const colors = ['#ff6b6b', '#ffa8a8', '#ffce67', '#8ce0ff', '#a5ffef'];
+
+            // 创建多个飘落元素
+            for (let i = 0; i < 30; i++) {
+                const element = document.createElement('div');
+                element.className = 'falling-element';
+
+                // 随机选择类型和颜色
+                const typeIndex = Math.floor(Math.random() * types.length);
+                const colorIndex = Math.floor(Math.random() * colors.length);
+
+                element.textContent = types[typeIndex];
+                element.style.color = colors[colorIndex];
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                element.style.fontSize = `${Math.random() * 15 + 15}px`;
+                element.style.opacity = Math.random() * 0.7 + 0.3;
+
+                container.appendChild(element);
+            }
+        }
+    </script>
 </body>
 
 </html>
