@@ -45,6 +45,26 @@
     <!-- 飘落元素容器 -->
     <div class="falling-elements"></div>
 
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="./music.mp3" type="audio/mp3">
+        您的浏览器不支持音频元素。
+    </audio>
+
+    <script>
+        // 确保音乐可以自动播放
+        document.addEventListener('DOMContentLoaded', function () {
+            const bgMusic = document.getElementById('bgMusic');
+            // 尝试播放音乐，如果被浏览器阻止则等待用户交互
+            bgMusic.play().catch(function (error) {
+                console.log('自动播放被阻止，等待用户交互');
+                document.body.addEventListener('click', function () {
+                    bgMusic.play();
+                }, { once: true });
+            });
+        });
+    </script>
+
     <!-- 添加星星闪烁效果 -->
     <script>
         // 创建星星闪烁效果
